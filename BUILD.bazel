@@ -5,3 +5,21 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 gazelle(
     name = "gazelle",
 )
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/creedasaurus/bazeltest",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_google_cloud_go//storage:go_default_library",
+        "@org_golang_google_api//option:go_default_library",
+        "@org_golang_google_appengine//file:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "bazeltest",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
