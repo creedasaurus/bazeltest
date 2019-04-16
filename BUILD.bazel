@@ -2,6 +2,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
 # gazelle:prefix github.com/creedasaurus/bazeltest
+# gazelle:proto disable_global
 gazelle(
     name = "gazelle",
 )
@@ -13,6 +14,7 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "@com_google_cloud_go//storage:go_default_library",
+        "@io_opencensus_go_contrib_exporter_stackdriver//:go_default_library",
         "@org_golang_google_api//option:go_default_library",
         "@org_golang_google_appengine//file:go_default_library",
     ],

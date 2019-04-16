@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"cloud.google.com/go/storage"
+	_ "contrib.go.opencensus.io/exporter/stackdriver"
 	"google.golang.org/api/option"
 	"google.golang.org/appengine/file"
 )
